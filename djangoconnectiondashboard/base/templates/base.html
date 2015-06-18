@@ -1,0 +1,43 @@
+{# base/templates/base.html #}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Dashboard{% endblock title %}</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    </head>
+
+    <body style="padding-top: 70px;">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{% url 'home' %}">Dashboard</a>
+                </div>
+                {% block nav %}
+                {% if request.session.login %}
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/result/">result</a></li>
+                        <li><a href="javascript://">{{ request.session.name }} 您好</a></li>
+                    </ul>
+                    <a href="/logout" class="btn btn-danger navbar-btn">登出</a>
+                </div>
+                {% endif %}
+                {% endblock nav %}
+            </div>
+        </nav>
+        <div class="container-fluid">
+        {% block content %}
+        {% endblock %}
+        </div>
+        <div class="container-fluid">
+        {% block footer %}
+        <hr>
+        <h5 class="text-center">Footer</h2>
+        {% endblock footer %}
+        </div>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        {% block js %}{% endblock js %}
+    </body>
+</html>

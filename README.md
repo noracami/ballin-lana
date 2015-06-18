@@ -27,7 +27,10 @@ source ./venv/bin/activate
 
 ---
 
-``` pip install -U pip ```
+``
+pip install -U pip
+export DJANGO_SETTINGS_MODULE=djangoconnectiondashboard.settings.local
+```
 
 ---
 
@@ -44,6 +47,11 @@ python manage.py runserver 0.0.0.0:8008
 ```
 
 ---
+
+```
+django-admin startproject djangoconnectiondashboard
+python manage.py startapp teams
+```
 
 It is easy to use Python with forever.js:
 
